@@ -4,414 +4,860 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROS Worship | Public Reading of Scripture</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-dark: #1a2332;
+            --primary: #2d3748;
+            --accent-gold: #c9a227;
+            --accent-warm: #d4a574;
+            --text-light: #f7fafc;
+            --text-muted: #a0aec0;
+            --bg-cream: #faf9f7;
+            --bg-warm: #f5f3f0;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #2c3e50;
-            --secondary: #8b5a2b;
-            --accent: #d4a574;
-            --light: #f8f6f3;
-            --text: #333;
-            --scripture: #4a6741;
-        }
-
         body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            line-height: 1.8;
-            color: var(--text);
-            background: var(--light);
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.7;
+            color: var(--primary);
+            background: var(--bg-cream);
         }
 
         /* Header */
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, #34495e 100%);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-            border-bottom: 5px solid var(--accent);
-        }
-
-        header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: 2px;
-        }
-
-        header .subtitle {
-            font-size: 1.3rem;
-            font-style: italic;
-            opacity: 0.9;
-        }
-
-        .scripture-verse {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 8px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .scripture-verse p {
-            font-size: 1.2rem;
-            font-style: italic;
-        }
-
-        .scripture-ref {
-            display: block;
-            margin-top: 0.5rem;
-            font-weight: bold;
-        }
-
-        /* Navigation */
-        nav {
-            background: var(--secondary);
-            padding: 1rem;
-            position: sticky;
+        .header {
+            position: fixed;
             top: 0;
-            z-index: 100;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(26, 35, 50, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 0;
+            height: 70px;
         }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background 0.3s;
-        }
-
-        nav a:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        /* Main Content */
-        main {
-            max-width: 900px;
+        .header-content {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 3rem 2rem;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
         }
 
-        section {
-            margin-bottom: 4rem;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-light);
         }
 
-        section h2 {
-            color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid var(--accent);
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-warm));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
         }
 
-        section h3 {
-            color: var(--secondary);
-            font-size: 1.4rem;
-            margin: 2rem 0 1rem;
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
 
-        p {
-            margin-bottom: 1.5rem;
-            text-align: justify;
+        .logo-text span {
+            color: var(--accent-gold);
         }
 
-        /* Callout Boxes */
-        .callout {
-            background: #fff;
-            border-left: 5px solid var(--scripture);
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-radius: 0 8px 8px 0;
+        /* Desktop Nav */
+        .nav-desktop {
+            display: flex;
+            gap: 2.5rem;
         }
 
-        .callout.welcome {
-            border-left-color: var(--accent);
-            background: linear-gradient(135deg, #fff 0%, #fdf8f3 100%);
+        .nav-desktop a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
         }
 
-        .callout.theology {
-            border-left-color: var(--secondary);
+        .nav-desktop a:hover {
+            color: var(--accent-gold);
+            border-bottom-color: var(--accent-gold);
         }
 
-        /* Quote Blocks */
-        .quote-block {
-            background: #f5f5f5;
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 8px;
-            font-style: italic;
+        .nav-desktop a.cta-link {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            border: none;
+        }
+
+        .nav-desktop a.cta-link:hover {
+            background: var(--accent-warm);
+            border: none;
+        }
+
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger {
+            width: 28px;
+            height: 20px;
             position: relative;
         }
 
-        .quote-block::before {
-            content: """;
-            font-size: 4rem;
-            color: var(--accent);
+        .hamburger span {
+            display: block;
             position: absolute;
-            top: -10px;
-            left: 10px;
-            line-height: 1;
+            height: 2px;
+            width: 100%;
+            background: var(--text-light);
+            border-radius: 2px;
+            transition: all 0.3s;
         }
 
-        .quote-source {
-            display: block;
-            margin-t옵: 1rem;
-            font-style: normal;
-            font-weight: bold;
-            color: var(--secondary);
-            text-align: right;
+        .hamburger span:nth-child(1) { top: 0; }
+        .hamburger span:nth-child(2) { top: 9px; }
+        .hamburger span:nth-child(3) { top: 18px; }
+
+        .menu-toggle.active .hamburger span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 9px;
         }
 
-        /* Scripture List */
-        .scripture-list {
-            list-style: none;
-            padding: 0;
+        .menu-toggle.active .hamburger span:nth-child(2) {
+            opacity: 0;
         }
 
-        .scripture-list li {
-            padding: 1rem 1.5rem;
-            margin: 0.5rem 0;
-            background: #fff;
-            border-radius: 6px;
-            border-left: 4px solid var(--scripture);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        .menu-toggle.active .hamburger span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 9px;
         }
 
-        .scripture-list li strong {
-            color: var(--scripture);
-            display: block;
-            margin-bottom: 0.3rem;
+        /* Mobile Nav */
+        .nav-mobile {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: var(--primary-dark);
+            padding: 2rem;
+            display: none;
+            flex-direction: column;
+            gap: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        /* CTA Button */
-        .cta {
-            text-align: center;
-            padding: 3rem;
-            background: var(--primary);
-            color: white;
-            border-radius: 8px;
-            margin: 3rem 0;
+        .nav-mobile.active {
+            display: flex;
         }
 
-        .cta h2 {
-            color: white;
+        .nav-mobile a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-mobile a:last-child {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
             border: none;
+            border-radius: 4px;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.85) 0%, rgba(45, 55, 72, 0.9) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%231a2332" width="1200" height="800"/><circle cx="600" cy="400" r="300" fill="%232d3748" opacity="0.5"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 2rem 4rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(201, 162, 39, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(201, 162, 39, 0.2);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: var(--text-light);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 em {
+            color: var(--accent-gold);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-weight: 400;
+        }
+
+        .hero-verse {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--accent-gold);
+            padding: 1.5rem 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .hero-verse p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-verse cite {
+            color: var(--accent-gold);
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            border: 2px solid var(--accent-gold);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-warm);
+            border-color: var(--accent-warm);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             margin-bottom: 1rem;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--accent);
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
             color: var(--primary);
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-            margin-top: 1rem;
-            transition: transform 0.2s;
+            margin-bottom: 1rem;
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Welcome Section */
+        .welcome {
+            background: var(--bg-warm);
+        }
+
+        .welcome-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .welcome-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .welcome-text p:first-child::first-letter {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            float: left;
+            line-height: 1;
+            padding-right: 0.75rem;
+            color: var(--accent-gold);
+        }
+
+        .highlight-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .highlight-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Video Section */
+        .video-section {
+            background: var(--primary-dark);
+            color: var(--text-light);
+        }
+
+        .video-section h2 {
+            color: var(--text-light);
+        }
+
+        .video-section .section-subtitle {
+            color: var(--text-muted);
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-cta {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Biblical Foundation */
+        .foundations {
+            background: white;
+        }
+
+        .foundations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .foundation-card {
+            background: var(--bg-cream);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-top: 4px solid var(--accent-gold);
+            transition: all 0.3s;
+        }
+
+        .foundation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .foundation-card .reference {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .foundation-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .foundation-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: var(--text-light);
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .cta-section h2 {
+            color: var(--text-light);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         /* Footer */
         footer {
-            background: var(--primary);
-            color: white;
+            background: var(--primary-dark);
+            color: var(--text-light);
+            padding: 3rem 2rem;
             text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+        }
+
+        footer .logo {
+            justify-content: center;
+            margin-bottom: 1.5rem;
         }
 
         footer p {
-            text-align: center;
-            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            max-width: 500px;
+            margin: 0 auto 0.5rem;
+        }
+
+        footer .verse {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--accent-gold);
+            margin-top: 1rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
+            .nav-desktop {
+                display: none;
             }
 
-            nav ul {
+            .menu-toggle {
+                display: block;
+            }
+
+            .welcome-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-cta {
                 flex-direction: column;
-                gap: 0.5rem;
+                align-items: center;
             }
 
-            main {
-                padding: 2rem 1rem;
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
             }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>PROS Worship</h1>
-        <p class="subtitle">Public Reading of Scripture</p>
-        <div class="scripture-verse">
-            <p>"Devote yourself to the public reading of Scripture, to preaching and to teaching."</p>
-            <span class="scripture-ref">— 1 Timothy 4:13</span>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">📖</div>
+                <span class="logo-text">PROS <span>Worship</span></span>
+            </a>
+            
+            <nav class="nav-desktop">
+                <a href="#about">About</a>
+                <a href="#media">Media</a>
+                <a href="#foundation">Foundation</a>
+                <a href="#start" class="cta-link">Start a PROS</a>
+            </nav>
+            
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
         </div>
+        
+        <nav class="nav-mobile" id="mobileNav">
+            <a href="#about" onclick="toggleMenu()">About</a>
+            <a href="#media" onclick="toggleMenu()">Media</a>
+            <a href="#foundation" onclick="toggleMenu()">Foundation</a>
+            <a href="#join" onclick="toggleMenu()">Join a PROS</a>
+            <a href="#start" onclick="toggleMenu()">Start a PROS</a>
+        </nav>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#welcome">Welcome</a></li>
-            <li><a href="#why">Why PROS?</a></li>
-            <li><a href="#media">Watch</a></li>
-            <li><a href="#biblical">Biblical Foundation</a></li>
-            <li><a href="#early-church">Early Church</a></li>
-            <li><a href="#matters">Why It Matters</a></li>
-        </ul>
-    </nav>
-
-    <main>
-        <!-- Welcome Section -->
-        <section id="welcome">
-            <h2>Welcome to PROS Worship</h2>
-            
-            <div class="callout welcome">
-                <p>In PROS worship, we gather around the conviction that <strong>God speaks through His Word</strong>—and that His Word addresses the deepest questions of human life: <em>Who am I? Why am I here? What is wrong with the world? Is there hope?</em></p>
-                
-                <p>Rather than rushing to answers, this service invites us first to <strong>listen</strong>. Through the public reading of Scripture, we place ourselves under God's voice—trusting that the story of Jesus Christ gives meaning, direction, and hope that no other story can provide.</p>
-                
-                <p>Here, the Bible is not merely discussed or summarized, but <strong>heard aloud</strong>, shaping us together as God's people. Whether you come with faith, doubt, curiosity, or longing, <strong>you are welcome here</strong>.</p>
-            </div>
-
-            <h3>A Word of Thanks</h3>
-            <p>We are deeply grateful to our hosts for generously providing this space for worship. As guests, we invite you to join us in being a blessing—through kindness, gratitude, and support for the staff and volunteers that make this gathering possible. Thank you for helping us worship with grace, respect, and generosity.</p>
-        </section>
-
-        <!-- Why PROS Section -->
-        <section id="why">
-            <h2>Why Scripture Reading Is the Center of Our Worship</h2>
-            
-            <div class="callout theology">
-                <p>At the heart of PROS worship is a simple conviction: <strong>God speaks through His Word.</strong> When Scripture is read aloud, God addresses His people—shaping faith, forming the church, and directing our lives.</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                ✨ Rooted in Ancient Practice
             </div>
             
-            <p>The public reading of Scripture is not preparation for worship—<strong>it is worship</strong>. Before we speak, explain, or respond, we listen. Christians have always been a listening people.</p>
-        </section>
-
-        <!-- Biblical Foundation Section -->
-        <section id="biblical">
-            <h2>A Biblical Pattern</h2>
+            <h1>
+                Where God's Word<br>
+                <em>Becomes Worship</em>
+            </h1>
             
-            <p>From beginning to end, Scripture shows God's people gathering to hear God's Word read publicly:</p>
+            <p class="hero-subtitle">
+                Join a growing movement of churches rediscovering the ancient practice of public Scripture reading. 
+                No performance. No pressure. Just the living Word, read aloud.
+            </p>
             
-            <ul class="scripture-list">
-                <li>
-                    <strong>Moses read the Law aloud before Israel</strong>
-                    <span>Exodus 24:7; Deuteronomy 31:11–13</span>
-                </li>
-                <li>
-                    <strong>Ezra read the Scriptures for hours while the people listened attentively</strong>
-                    <span>Nehemiah 8:1–3, 8</span>
-                </li>
-                <li>
-                    <strong>Jesus participated in public Scripture reading in the synagogue</strong>
-                    <span>Luke 4:16–21</span>
-                </li>
-                <li>
-                    <strong>Paul commanded the church to prioritize public Scripture reading</strong>
-                    <span>1 Timothy 4:13; Colossians 4:16; 1 Thessalonians 5:27</span>
-                </li>
-            </ul>
-            
-            <div class="quote-block">
+            <div class="hero-verse">
                 <p>"Devote yourself to the public reading of Scripture, to preaching and to teaching."</p>
-                <span class="quote-source">— 1 Timothy 4:13</span>
+                <cite>— 1 Timothy 4:13</cite>
             </div>
-        </section>
+            
+            <div class="hero-cta">
+                <a href="#join" class="btn-primary">🔍 Find a PROS Worship</a>
+                <a href="#start" class="btn-secondary">🚀 Start a PROS Worship</a>
+            </div>
+        </div>
+    </section>
 
-        <!-- Early Church Section -->
-        <section id="early-church">
-            <h2>The Practice of the Early Church</h2>
-            
-            <p>The early church clearly made reading the Scriptures central to their worship. In the second century, Justin Martyr described Christian worship like this:</p>
-            
-            <div class="quote-block">
-                <p>"And on the day called Sunday, all who live in cities or in the country gather together to one place, and the memoirs of the apostles or the writings of the prophets are read, as long as time permits; then, when the reader has ceased, the president verbally instructs, and exhorts to the imitation of these good things."</p>
-                <span class="quote-source">— Justin Martyr, First Apology, ch. 67</span>
+    <!-- Welcome Section -->
+    <section class="welcome" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">About PROS</span>
+                <h2>Scripture Reading Is<br>Worship, Not Preparation</h2>
+                <p class="section-subtitle">
+                    In PROS worship, we gather around the conviction that God speaks through His Word—and that His Word addresses the deepest questions of human life.
+                </p>
             </div>
             
-            <p>A generation later, Tertullian described Christian gatherings in North Africa:</p>
-            
-            <div class="quote-block">
-                <p>"We assemble to read our sacred writings… With the sacred words we nourish our faith, we animate our hope, we make our confidence more steadfast."</p>
-                <span class="quote-source">— Tertullian, Apology, ch. 39 (Roberts–Donaldson translation)</span>
+            <div class="welcome-grid">
+                <div class="welcome-text">
+                    <p>In PROS worship, we gather around the conviction that <strong>God speaks through His Word</strong>—and that His Word addresses the deepest questions of human life: <em>Who am I? Why am I here? What is wrong with the world? Is there hope?</em></p>
+                    
+                    <p>Rather than rushing to answers, this service invites us first to <strong>listen</strong>. Through the public reading of Scripture, we place ourselves under God's voice—trusting that the story of Jesus Christ gives meaning, direction, and hope that no other story can provide.</p>
+                    
+                    <p>Here, the Bible is not merely discussed or summarized, but <strong>heard aloud</strong>, shaping us together as God's people. Whether you come with faith, doubt, curiosity, or longing, <strong>you are welcome here</strong>.</p>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>🙏 A Word of Thanks</h3>
+                    <p>We are deeply grateful to our hosts for generously providing this space for worship. As guests, we invite you to join us in being a blessing—through kindness, gratitude, and support for the staff and volunteers that make this gathering possible.</p>
+                </div>
             </div>
-            
-            <p>By the time of Augustine of Hippo in the fourth century, this pattern remained firmly in place. Reflecting on Christian worship, Augustine spoke of the church being fed by Scripture before anything else:</p>
-            
-            <div class="quote-block">
-                <p>"The divine Scriptures are read, the psalms are sung, the sermons are preached, the prayers are offered."</p>
-                <span class="quote-source">— Augustine, Sermon 227</span>
-            </div>
-            
-            <p>Across centuries and cultures, <strong>the church gathered first to listen</strong>.</p>
-        </section>
+        </div>
+    </section>
 
-        <!-- Media Section -->
-        <section id="media">
-            <h2>Experience PROS Worship</h2>
+    <!-- Video Section -->
+    <section class="video-section" id="media">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Experience PROS</span>
+                <h2>Watch PROS Worship in Action</h2>
+                <p class="section-subtitle">
+                    These recordings capture the essence of PROS worship—gathering to hear God's Word read publicly.
+                </p>
+            </div>
             
-            <p>Watch and listen to examples of PROS worship gatherings. These videos demonstrate how Scripture reading shapes our worship and forms God's people.</p>
-            
-            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 2rem 0; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+            <div class="video-container">
                 <iframe 
                     src="https://www.youtube.com/embed/videoseries?list=PLIQrn7u8zflAPbl3kXZCuGlmuMWuW65-B" 
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
                     title="PROS Worship Playlist" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
                 </iframe>
             </div>
             
-            <p style="text-align: center; margin-top: 1rem;">
-                <a href="https://youtube.com/playlist?list=PLIQrn7u8zflAPbl3kXZCuGlmuMWuW65-B" target="_blank" style="color: var(--secondary); text-decoration: none; font-weight: bold; border: 2px solid var(--secondary); padding: 0.5rem 1rem; border-radius: 4px; display: inline-block;">
+            <div class="video-cta">
+                <a href="https://youtube.com/playlist?list=PLIQrn7u8zflAPbl3kXZCuGlmuMWuW65-B" target="_blank" class="btn-primary">
                     📺 View Full Playlist on YouTube
                 </a>
-            </p>
-        </section>
-
-        <!-- Why It Matters Section -->
-        <section id="matters">
-            <h2>Why This Still Matters</h2>
-            
-            <p>PROS worship stands in this historic stream. In a world full of voices, opinions, and distractions, we gather to hear <strong>the one voice that gives life</strong>.</p>
-            
-            <p>We pray that as you listen, God will meet you—speaking truth, grace, and life.</p>
-            
-            <div class="cta">
-                <h2>Join Us in Worship</h2>
-                <p>Find a PROS worship gathering near you and experience the transforming power of hearing God's Word together.</p>
-                <a href="#" class="btn">Find a Gathering</a>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- Biblical Foundation Section -->
+    <section class="foundations" id="foundation">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Biblical Foundation</span>
+                <h2>A Pattern From Scripture to Today</h2>
+                <p class="section-subtitle">
+                    From Moses to Paul to the early church, God's people have always gathered to hear His Word read aloud.
+                </p>
+            </div>
+            
+            <div class="foundations-grid">
+                <div class="foundation-card fade-in">
+                    <div class="reference">Exodus 24:7; Deut 31:11-13</div>
+                    <h3>Moses Before Israel</h3>
+                    <p>Moses read the Law aloud before all Israel, establishing the pattern of public Scripture reading for the covenant community.</p>
+                </div>
+                
+                <div class="foundation-card fade-in">
+                    <div class="reference">Nehemiah 8:1-3, 8</div>
+                    <h3>Ezra's Marathon Reading</h3>
+                    <p>Ezra read the Scriptures for hours while the people listened attentively—Scripture as the center of gathered worship.</p>
+                </div>
+                
+                <div class="foundation-card fade-in">
+                    <div class="reference">Luke 4:16-21</div>
+                    <h3>Jesus in the Synagogue</h3>
+                    <p>Jesus participated in public Scripture reading, then proclaimed its fulfillment in His own ministry.</p>
+                </div>
+                
+                <div class="foundation-card fade-in">
+                    <div class="reference">1 Timothy 4:13</div>
+                    <h3>Paul's Command</h3>
+                    <p>Paul commands Timothy: "Devote yourself to the public reading of Scripture, to preaching and to teaching."</p>
+                </div>
+                
+                <div class="foundation-card fade-in">
+                    <div class="reference">Justin Martyr, c. 150 AD</div>
+                    <h3>Early Church Practice</h3>
+                    <p>"The memoirs of the apostles or the writings of the prophets are read, as long as time permits..."</p>
+                </div>
+                
+                <div class="foundation-card fade-in">
+                    <div class="reference">Augustine, Sermon 227</div>
+                    <h3>Ancient Pattern</h3>
+                    <p>"The divine Scriptures are read, the psalms are sung, the sermons are preached, the prayers are offered."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join CTA Section -->
+    <section class="cta-section" id="join">
+        <div class="container">
+            <h2>Find a PROS Worship Near You</h2>
+            <p>
+                Join others who are gathering to hear God's Word read aloud. 
+                Experience the transforming power of public Scripture reading.
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">🔍 Find a Gathering</a>
+                <a href="#contact" class="btn-secondary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Start CTA Section -->
+    <section class="cta-section" id="start" style="background: var(--bg-warm);">
+        <div class="container">
+            <h2 style="color: var(--primary);">Start a PROS Worship</h2>
+            <p style="color: var(--text-muted);">
+                Bring PROS worship to your community. We provide resources, guidance, and a network of churches 
+                committed to making Scripture reading central to worship.
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">🚀 Get Started Guide</a>
+                <a href="#" class="btn-secondary">Download Resources</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p><strong>PROS Worship</strong> | Public Reading of Scripture</p>
-        <p>"Devote yourself to the public reading of Scripture, to preaching and to teaching." — 1 Timothy 4:13</p>
-        <p>© 2026 PROS Worship. Standing in the historic stream of the church.</p>
+        <a href="#" class="logo">
+            <div class="logo-icon">📖</div>
+            <span class="logo-text">PROS <span>Worship</span></span>
+        </a>
+        <p>Public Reading of Scripture — A movement of churches returning to the Bible as the center of worship.</p>
+        <p class="verse">"Devote yourself to the public reading of Scripture..." — 1 Timothy 4:13</p>
     </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobileNav');
+            const toggle = document.querySelector('.menu-toggle');
+            menu.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-mobile a').forEach(link => {
+            link.addEventListener('click', () => {
+                toggleMenu();
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade-in Animation on Scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
