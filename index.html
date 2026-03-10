@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROS Worship | Public Reading of Scripture</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #8b5a2b;
+            --accent: #d4a574;
+            --light: #f8f6f3;
+            --text: #333;
+            --scripture: #4a6741;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            color: var(--text);
+            background: var(--light);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #34495e 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        header .subtitle {
+            font-size: 1.3rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .scripture-verse {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .scripture-verse p {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        .scripture-ref {
+            display: block;
+            margin-top: 0.5rem;
+            font-weight: bold;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--secondary);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        section h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        section h3 {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin: 2rem 0 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Callout Boxes */
+        .callout {
+            background: #fff;
+            border-left: 5px solid var(--scripture);
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .callout.welcome {
+            border-left-color: var(--accent);
+            background: linear-gradient(135deg, #fff 0%, #fdf8f3 100%);
+        }
+
+        .callout.theology {
+            border-left-color: var(--secondary);
+        }
+
+        /* Quote Blocks */
+        .quote-block {
+            background: #f5f5f5;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: """;
+            font-size: 4rem;
+            color: var(--accent);
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            line-height: 1;
+        }
+
+        .quote-source {
+            display: block;
+            margin-t옵: 1rem;
+            font-style: normal;
+            font-weight: bold;
+            color: var(--secondary);
+            text-align: right;
+        }
+
+        /* Scripture List */
+        .scripture-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .scripture-list li {
+            padding: 1rem 1.5rem;
+            margin: 0.5rem 0;
+            background: #fff;
+            border-radius: 6px;
+            border-left: 4px solid var(--scripture);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .scripture-list li strong {
+            color: var(--scripture);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        /* CTA Button */
+        .cta {
+            text-align: center;
+            padding: 3rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            margin: 3rem 0;
+        }
+
+        .cta h2 {
+            color: white;
+            border: none;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PROS Worship</h1>
+        <p class="subtitle">Public Reading of Scripture</p>
+        <div class="scripture-verse">
+            <p>"Devote yourself to the public reading of Scripture, to preaching and to teaching."</p>
+            <span class="scripture-ref">— 1 Timothy 4:13</span>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#welcome">Welcome</a></li>
+            <li><a href="#why">Why PROS?</a></li>
+            <li><a href="#biblical">Biblical Foundation</a></li>
+            <li><a href="#early-church">Early Church</a></li>
+            <li><a href="#matters">Why It Matters</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Welcome Section -->
+        <section id="welcome">
+            <h2>Welcome to PROS Worship</h2>
+            
+            <div class="callout welcome">
+                <p>In PROS worship, we gather around the conviction that <strong>God speaks through His Word</strong>—and that His Word addresses the deepest questions of human life: <em>Who am I? Why am I here? What is wrong with the world? Is there hope?</em></p>
+                
+                <p>Rather than rushing to answers, this service invites us first to <strong>listen</strong>. Through the public reading of Scripture, we place ourselves under God's voice—trusting that the story of Jesus Christ gives meaning, direction, and hope that no other story can provide.</p>
+                
+                <p>Here, the Bible is not merely discussed or summarized, but <strong>heard aloud</strong>, shaping us together as God's people. Whether you come with faith, doubt, curiosity, or longing, <strong>you are welcome here</strong>.</p>
+            </div>
+
+            <h3>A Word of Thanks</h3>
+            <p>We are deeply grateful to our hosts for generously providing this space for worship. As guests, we invite you to join us in being a blessing—through kindness, gratitude, and support for the staff and volunteers that make this gathering possible. Thank you for helping us worship with grace, respect, and generosity.</p>
+        </section>
+
+        <!-- Why PROS Section -->
+        <section id="why">
+            <h2>Why Scripture Reading Is the Center of Our Worship</h2>
+            
+            <div class="callout theology">
+                <p>At the heart of PROS worship is a simple conviction: <strong>God speaks through His Word.</strong> When Scripture is read aloud, God addresses His people—shaping faith, forming the church, and directing our lives.</p>
+            </div>
+            
+            <p>The public reading of Scripture is not preparation for worship—<strong>it is worship</strong>. Before we speak, explain, or respond, we listen. Christians have always been a listening people.</p>
+        </section>
+
+        <!-- Biblical Foundation Section -->
+        <section id="biblical">
+            <h2>A Biblical Pattern</h2>
+            
+            <p>From beginning to end, Scripture shows God's people gathering to hear God's Word read publicly:</p>
+            
+            <ul class="scripture-list">
+                <li>
+                    <strong>Moses read the Law aloud before Israel</strong>
+                    <span>Exodus 24:7; Deuteronomy 31:11–13</span>
+                </li>
+                <li>
+                    <strong>Ezra read the Scriptures for hours while the people listened attentively</strong>
+                    <span>Nehemiah 8:1–3, 8</span>
+                </li>
+                <li>
+                    <strong>Jesus participated in public Scripture reading in the synagogue</strong>
+                    <span>Luke 4:16–21</span>
+                </li>
+                <li>
+                    <strong>Paul commanded the church to prioritize public Scripture reading</strong>
+                    <span>1 Timothy 4:13; Colossians 4:16; 1 Thessalonians 5:27</span>
+                </li>
+            </ul>
+            
+            <div class="quote-block">
+                <p>"Devote yourself to the public reading of Scripture, to preaching and to teaching."</p>
+                <span class="quote-source">— 1 Timothy 4:13</span>
+            </div>
+        </section>
+
+        <!-- Early Church Section -->
+        <section id="early-church">
+            <h2>The Practice of the Early Church</h2>
+            
+            <p>The early church clearly made reading the Scriptures central to their worship. In the second century, Justin Martyr described Christian worship like this:</p>
+            
+            <div class="quote-block">
+                <p>"And on the day called Sunday, all who live in cities or in the country gather together to one place, and the memoirs of the apostles or the writings of the prophets are read, as long as time permits; then, when the reader has ceased, the president verbally instructs, and exhorts to the imitation of these good things."</p>
+                <span class="quote-source">— Justin Martyr, First Apology, ch. 67</span>
+            </div>
+            
+            <p>A generation later, Tertullian described Christian gatherings in North Africa:</p>
+            
+            <div class="quote-block">
+                <p>"We assemble to read our sacred writings… With the sacred words we nourish our faith, we animate our hope, we make our confidence more steadfast."</p>
+                <span class="quote-source">— Tertullian, Apology, ch. 39 (Roberts–Donaldson translation)</span>
+            </div>
+            
+            <p>By the time of Augustine of Hippo in the fourth century, this pattern remained firmly in place. Reflecting on Christian worship, Augustine spoke of the church being fed by Scripture before anything else:</p>
+            
+            <div class="quote-block">
+                <p>"The divine Scriptures are read, the psalms are sung, the sermons are preached, the prayers are offered."</p>
+                <span class="quote-source">— Augustine, Sermon 227</span>
+            </div>
+            
+            <p>Across centuries and cultures, <strong>the church gathered first to listen</strong>.</p>
+        </section>
+
+        <!-- Why It Matters Section -->
+        <section id="matters">
+            <h2>Why This Still Matters</h2>
+            
+            <p>PROS worship stands in this historic stream. In a world full of voices, opinions, and distractions, we gather to hear <strong>the one voice that gives life</strong>.</p>
+            
+            <p>We pray that as you listen, God will meet you—speaking truth, grace, and life.</p>
+            
+            <div class="cta">
+                <h2>Join Us in Worship</h2>
+                <p>Find a PROS worship gathering near you and experience the transforming power of hearing God's Word together.</p>
+                <a href="#" class="btn">Find a Gathering</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>PROS Worship</strong> | Public Reading of Scripture</p>
+        <p>"Devote yourself to the public reading of Scripture, to preaching and to teaching." — 1 Timothy 4:13</p>
+        <p>© 2026 PROS Worship. Standing in the historic stream of the church.</p>
+    </footer>
+</body>
+</html>
