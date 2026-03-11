@@ -7,44 +7,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-dark: #1a2332;
-            --primary: #2d3748;
-            --accent-gold: #c9a227;
-            --accent-warm: #d4a574;
-            --text-light: #f7fafc;
-            --text-muted: #a0aec0;
-            --bg-cream: #faf9f7;
-            --bg-warm: #f5f3f0;
+            --pros-navy: #0d5b93;
+            --pros-navy-dark: #1e3a5f;
+            --pros-navy-light: #1e40af;
+            --pros-blue: #60a5fa;
+            --pros-blue-light: #93c5fd;
+            --pros-blue-pale: #bfdbfe;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --bg-cream: #f1f5f9;
+            --white: #ffffff;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Open Sans', sans-serif;
             line-height: 1.7;
-            color: var(--primary);
-            background: var(--bg-cream);
+            color: var(--text-dark);
+            background: var(--bg-light);
         }
 
-        /* Header */
+        /* Fixed Header with Logo */
         .header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(26, 35, 50, 0.98);
+            background: rgba(13, 91, 147, 0.98);
             backdrop-filter: blur(10px);
-            padding: 0;
             height: 70px;
         }
 
         .header-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
             display: flex;
@@ -56,117 +54,72 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 1rem;
             text-decoration: none;
-            color: var(--text-light);
         }
 
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-warm));
+        .logo img {
+            height: 50px;
+            width: 50px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.3);
         }
 
         .logo-text {
+            color: var(--white);
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
         }
 
         .logo-text span {
-            color: var(--accent-gold);
+            color: var(--pros-blue-light);
         }
 
-        /* Desktop Nav */
-        .nav-desktop {
-            display: flex;
-            gap: 2.5rem;
-        }
+        .nav-desktop { display: flex; gap: 2.5rem; align-items: center; }
 
         .nav-desktop a {
-            color: var(--text-light);
+            color: var(--white);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            letter-spacing: 0.5px;
             padding: 0.5rem 0;
             border-bottom: 2px solid transparent;
             transition: all 0.3s;
         }
 
-        .nav-desktop a:hover {
-            color: var(--accent-gold);
-            border-bottom-color: var(--accent-gold);
-        }
+        .nav-desktop a:hover { color: var(--pros-blue-light); border-bottom-color: var(--pros-blue-light); }
 
         .nav-desktop a.cta-link {
-            background: var(--accent-gold);
-            color: var(--primary-dark);
+            background: var(--white);
+            color: var(--pros-navy);
             padding: 0.6rem 1.2rem;
             border-radius: 4px;
             border: none;
         }
 
-        .nav-desktop a.cta-link:hover {
-            background: var(--accent-warm);
-            border: none;
-        }
+        .nav-desktop a.cta-link:hover { background: var(--pros-blue-pale); }
 
-        /* Mobile Menu Button */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .hamburger {
-            width: 28px;
-            height: 20px;
-            position: relative;
-        }
+        /* Mobile Menu */
+        .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
 
         .hamburger span {
             display: block;
-            position: absolute;
-            height: 2px;
-            width: 100%;
-            background: var(--text-light);
+            width: 28px;
+            height: 3px;
+            background: var(--white);
+            margin: 5px 0;
             border-radius: 2px;
             transition: all 0.3s;
         }
 
-        .hamburger span:nth-child(1) { top: 0; }
-        .hamburger span:nth-child(2) { top: 9px; }
-        .hamburger span:nth-child(3) { top: 18px; }
-
-        .menu-toggle.active .hamburger span:nth-child(1) {
-            transform: rotate(45deg);
-            top: 9px;
-        }
-
-        .menu-toggle.active .hamburger span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active .hamburger span:nth-child(3) {
-            transform: rotate(-45deg);
-            top: 9px;
-        }
-
-        /* Mobile Nav */
         .nav-mobile {
             position: fixed;
             top: 70px;
             left: 0;
             right: 0;
-            background: var(--primary-dark);
+            background: var(--pros-navy);
             padding: 2rem;
             display: none;
             flex-direction: column;
@@ -174,122 +127,119 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        .nav-mobile.active {
-            display: flex;
-        }
+        .nav-mobile.active { display: flex; }
 
-        .nav-mobile a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
+        .nav-mobile a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 1.1rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
 
-        .nav-mobile a:last-child {
-            background: var(--accent-gold);
-            color: var(--primary-dark);
-            border: none;
-            border-radius: 4px;
-            text-align: center;
-            margin-top: 0.5rem;
-        }
+        .nav-mobile a:last-child { background: var(--white); color: var(--pros-navy); border: none; border-radius: 4px; text-align: center; margin-top: 0.5rem; }
 
-        /* Hero Section */
+        /* Hero with Slideshow */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, rgba(26, 35, 50, 0.85) 0%, rgba(45, 55, 72, 0.9) 100%),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%231a2332" width="1200" height="800"/><circle cx="600" cy="400" r="300" fill="%232d3748" opacity="0.5"/></svg>');
-            background-size: cover;
-            background-position: center;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 120px 2rem 4rem;
-            position: relative;
+            padding: 100px 2rem 4rem;
+            color: var(--white);
+            overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
+        .hero-slideshow {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(201, 162, 39, 0.1) 0%, transparent 50%);
-            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-slideshow .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .hero-slideshow .slide.active { opacity: 1; }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(13, 91, 147, 0.85) 0%, rgba(30, 58, 95, 0.9) 100%);
+            z-index: 1;
         }
 
         .hero-content {
             max-width: 900px;
             position: relative;
-            z-index: 1;
+            z-index: 2;
+        }
+
+        .hero-logo-large {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.3);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
         }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(201, 162, 39, 0.2);
-            border: 1px solid var(--accent-gold);
-            color: var(--accent-gold);
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--pros-blue-light);
             padding: 0.75rem 1.5rem;
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 2rem;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
         }
 
         .hero h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 700;
-            color: var(--text-light);
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            letter-spacing: -1px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
         }
 
-        .hero h1 em {
-            color: var(--accent-gold);
-            font-style: italic;
-        }
+        .hero h1 em { color: var(--pros-blue-light); font-style: italic; }
 
         .hero-subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-            color: var(--text-muted);
+            font-size: 1.25rem;
+            color: var(--pros-blue-pale);
             max-width: 700px;
-            margin: 0 auto 3rem;
-            font-weight: 400;
+            margin: 0 auto 2rem;
         }
 
         .hero-verse {
-            background: rgba(255, 255, 255, 0.05);
-            border-left: 4px solid var(--accent-gold);
+            background: rgba(255,255,255,0.1);
+            border-left: 4px solid var(--pros-blue);
             padding: 1.5rem 2rem;
             margin: 2rem auto;
             max-width: 600px;
             text-align: left;
         }
 
-        .hero-verse p {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            color: var(--text-light);
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
+        .hero-verse p { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; margin-bottom: 0.5rem; }
 
-        .hero-verse cite {
-            color: var(--accent-gold);
-            font-size: 0.95rem;
-            font-weight: 600;
-            font-style: normal;
-        }
+        .hero-verse cite { color: var(--pros-blue-light); font-weight: 600; }
 
         .hero-cta {
             display: flex;
@@ -300,99 +250,58 @@
         }
 
         .btn-primary {
-            background: var(--accent-gold);
-            color: var(--primary-dark);
-            padding: 1rem 2.5rem;
+            background: var(--white);
+            color: var(--pros-navy);
+            padding: 1.2rem 2.5rem;
             border-radius: 4px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
+            font-size: 1.05rem;
             transition: all 0.3s;
-            border: 2px solid var(--accent-gold);
+            border: 2px solid var(--white);
         }
 
-        .btn-primary:hover {
-            background: var(--accent-warm);
-            border-color: var(--accent-warm);
-            transform: translateY(-2px);
-        }
+        .btn-primary:hover { background: var(--pros-blue-pale); transform: translateY(-2px); }
 
         .btn-secondary {
             background: transparent;
-            color: var(--text-light);
-            padding: 1rem 2.5rem;
+            color: var(--white);
+            padding: 1.2rem 2.5rem;
             border-radius: 4px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
+            font-size: 1.05rem;
+            border: 2px solid rgba(255,255,255,0.5);
             transition: all 0.3s;
-            border: 2px solid rgba(255,255,255,0.3);
         }
 
-        .btn-secondary:hover {
-            border-color: var(--accent-gold);
-            color: var(--accent-gold);
-        }
+        .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
 
         /* Sections */
-        section {
-            padding: 6rem 2rem;
-        }
+        section { padding: 5rem 2rem; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1200px; margin: 0 auto; }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
+        .section-header { text-align: center; margin-bottom: 3rem; }
 
-        .section-label {
-            display: inline-block;
-            color: var(--accent-gold);
-            font-weight: 700;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
+        .section-label { color: var(--pros-navy); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; }
 
-        h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
+        h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--pros-navy-dark); margin-bottom: 1rem; }
 
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto;
-        }
+        .section-subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
 
-        /* Welcome Section */
-        .welcome {
-            background: var(--bg-warm);
-        }
+        /* Welcome Section - NO Word of Thanks */
+        .welcome { background: var(--bg-cream); }
 
         .welcome-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .welcome-text p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
+        .welcome-text p { font-size: 1.15rem; margin-bottom: 1.5rem; color: var(--text-dark); line-height: 1.8; }
 
         .welcome-text p:first-child::first-letter {
             font-family: 'Cormorant Garamond', serif;
@@ -400,213 +309,64 @@
             float: left;
             line-height: 1;
             padding-right: 0.75rem;
-            color: var(--accent-gold);
+            color: var(--pros-navy);
         }
 
-        .highlight-box {
-            background: white;
-            padding: 2rem;
+        /* Cards Grid */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+
+        .card {
+            background: var(--white);
             border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            border-left: 4px solid var(--accent-gold);
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--pros-navy);
+            transition: transform 0.3s;
         }
 
-        .highlight-box h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--pros-navy-dark); margin-bottom: 1rem; }
+        .card .reference { color: var(--pros-navy); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
 
         /* Video Section */
-        .video-section {
-            background: var(--primary-dark);
-            color: var(--text-light);
-        }
+        .video-section { background: var(--pros-navy); color: var(--white); }
+        .video-section h2 { color: var(--white); }
+        .video-section .section-subtitle { color: var(--pros-blue-pale); }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; margin-top: 2rem; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .video-cta { text-align: center; margin-top: 2rem; }
 
-        .video-section h2 {
-            color: var(--text-light);
-        }
-
-        .video-section .section-subtitle {
-            color: var(--text-muted);
-        }
-
-        .video-container {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .video-cta {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        /* Biblical Foundation */
-        .foundations {
-            background: white;
-        }
-
-        .foundations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .foundation-card {
-            background: var(--bg-cream);
-            padding: 2.5rem;
-            border-radius: 8px;
-            border-top: 4px solid var(--accent-gold);
-            transition: all 0.3s;
-        }
-
-        .foundation-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-        }
-
-        .foundation-card .reference {
-            color: var(--accent-gold);
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .foundation-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .foundation-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-            color: var(--text-light);
-            text-align: center;
-            padding: 5rem 2rem;
-        }
-
-        .cta-section h2 {
-            color: var(--text-light);
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+        /* CTA Sections */
+        .cta-section { background: var(--pros-navy-dark); color: var(--white); text-align: center; }
+        .cta-section.alt { background: var(--bg-cream); color: var(--pros-navy-dark); }
+        .cta-section.alt h2 { color: var(--pros-navy-dark); }
+        .cta-section p { color: var(--pros-blue-pale); max-width: 600px; margin: 0 auto 2rem; }
+        .cta-section.alt p { color: var(--text-muted); }
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
         /* Footer */
-        footer {
-            background: var(--primary-dark);
-            color: var(--text-light);
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        footer .logo {
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        footer p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            max-width: 500px;
-            margin: 0 auto 0.5rem;
-        }
-
-        footer .verse {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            color: var(--accent-gold);
-            margin-top: 1rem;
-        }
+        footer { background: var(--pros-navy); color: var(--white); padding: 3rem 2rem; text-align: center; }
+        footer .logo { justify-content: center; margin-bottom: 1.5rem; }
+        footer p { color: var(--pros-blue-pale); font-size: 0.9rem; margin-bottom: 0.5rem; }
+        footer .verse { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--pros-blue-light); margin-top: 1rem; }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-desktop {
-                display: none;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .welcome-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                max-width: 300px;
-                text-align: center;
-            }
-
-            section {
-                padding: 4rem 1.5rem;
-            }
-        }
-
-        /* Scroll Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .nav-desktop { display: none; }
+            .menu-toggle { display: block; }
+            .hero-cta { flex-direction: column; }
+            .btn-primary, .btn-secondary { width: 100%; max-width: 300px; margin: 0 auto; text-align: center; }
+            .hero-logo-large { width: 120px; height: 120px; }
+            section { padding: 4rem 1.5rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header with Logo -->
     <header class="header">
         <div class="header-content">
             <a href="#" class="logo">
-                <div class="logo-icon">📖</div>
+                <img src="pros-logo.jpg" alt="PROS Worship Logo">
                 <span class="logo-text">PROS <span>Worship</span></span>
             </a>
             
@@ -614,7 +374,7 @@
                 <a href="#about">About</a>
                 <a href="#media">Media</a>
                 <a href="#foundation">Foundation</a>
-                <a href="#start" class="cta-link">Start a PROS</a>
+                <a href="#join" class="cta-link">Join a PROS</a>
             </nav>
             
             <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
@@ -635,9 +395,25 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero with Photo Slideshow -->
     <section class="hero">
+        <div class="hero-slideshow" id="heroSlideshow">
+            <div class="slide active" style="background-image: url('hero-1.jpg')"></div>
+            <div class="slide" style="background-image: url('hero-2.jpg')"></div>
+            <div class="slide" style="background-image: url('hero-3.jpg')"></div>
+            <div class="slide" style="background-image: url('hero-4.jpg')"></div>
+            <div class="slide" style="background-image: url('hero-5.jpg')"></div>
+            <div class="slide" style="background-image: url('hero-6.jpg')"></div>
+            <div class="slide" style="background-image: url('hero-7.jpg')"></div>
+            <div class="slide" style="background-image: url('hero-8.jpg')"></div>
+            <div class="slide" style="background-image: url('hero-9.jpg')"></div>
+            <div class="slide" style="background-image: url('hero-10.jpg')"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        
         <div class="hero-content">
+            <img src="pros-logo.jpg" alt="PROS Worship" class="hero-logo-large">
+            
             <div class="hero-badge">
                 ✨ Rooted in Ancient Practice
             </div>
@@ -648,7 +424,7 @@
             </h1>
             
             <p class="hero-subtitle">
-                Join a growing movement of churches rediscovering the ancient practice of public Scripture reading. 
+                Join a growing movement of churches rediscovering the ancient practice of public Scripture reading.
                 No performance. No pressure. Just the living Word, read aloud.
             </p>
             
@@ -664,12 +440,12 @@
         </div>
     </section>
 
-    <!-- Welcome Section -->
+    <!-- Welcome Section (NO Word of Thanks) -->
     <section class="welcome" id="about">
         <div class="container">
             <div class="section-header">
                 <span class="section-label">About PROS</span>
-                <h2>Scripture Reading Is<br>Worship, Not Preparation</h2>
+                <h2>Scripture Reading Is Worship, Not Preparation</h2>
                 <p class="section-subtitle">
                     In PROS worship, we gather around the conviction that God speaks through His Word—and that His Word addresses the deepest questions of human life.
                 </p>
@@ -682,11 +458,6 @@
                     <p>Rather than rushing to answers, this service invites us first to <strong>listen</strong>. Through the public reading of Scripture, we place ourselves under God's voice—trusting that the story of Jesus Christ gives meaning, direction, and hope that no other story can provide.</p>
                     
                     <p>Here, the Bible is not merely discussed or summarized, but <strong>heard aloud</strong>, shaping us together as God's people. Whether you come with faith, doubt, curiosity, or longing, <strong>you are welcome here</strong>.</p>
-                </div>
-                
-                <div class="highlight-box">
-                    <h3>🙏 A Word of Thanks</h3>
-                    <p>We are deeply grateful to our hosts for generously providing this space for worship. As guests, we invite you to join us in being a blessing—through kindness, gratitude, and support for the staff and volunteers that make this gathering possible.</p>
                 </div>
             </div>
         </div>
@@ -714,7 +485,7 @@
             
             <div class="video-cta">
                 <a href="https://youtube.com/playlist?list=PLIQrn7u8zflAPbl3kXZCuGlmuMWuW65-B" target="_blank" class="btn-primary">
-                    📺 View Full Playlist on YouTube
+                    📺 View Full Playlist
                 </a>
             </div>
         </div>
@@ -731,38 +502,38 @@
                 </p>
             </div>
             
-            <div class="foundations-grid">
-                <div class="foundation-card fade-in">
+            <div class="cards-grid">
+                <div class="card">
                     <div class="reference">Exodus 24:7; Deut 31:11-13</div>
                     <h3>Moses Before Israel</h3>
                     <p>Moses read the Law aloud before all Israel, establishing the pattern of public Scripture reading for the covenant community.</p>
                 </div>
                 
-                <div class="foundation-card fade-in">
+                <div class="card">
                     <div class="reference">Nehemiah 8:1-3, 8</div>
                     <h3>Ezra's Marathon Reading</h3>
                     <p>Ezra read the Scriptures for hours while the people listened attentively—Scripture as the center of gathered worship.</p>
                 </div>
                 
-                <div class="foundation-card fade-in">
+                <div class="card">
                     <div class="reference">Luke 4:16-21</div>
                     <h3>Jesus in the Synagogue</h3>
                     <p>Jesus participated in public Scripture reading, then proclaimed its fulfillment in His own ministry.</p>
                 </div>
                 
-                <div class="foundation-card fade-in">
+                <div class="card">
                     <div class="reference">1 Timothy 4:13</div>
                     <h3>Paul's Command</h3>
-                    <p>Paul commands Timothy: "Devote yourself to the public reading of Scripture, to preaching and to teaching."</p>
+                    <p>"Devote yourself to the public reading of Scripture, to preaching and to teaching."</p>
                 </div>
                 
-                <div class="foundation-card fade-in">
+                <div class="card">
                     <div class="reference">Justin Martyr, c. 150 AD</div>
                     <h3>Early Church Practice</h3>
                     <p>"The memoirs of the apostles or the writings of the prophets are read, as long as time permits..."</p>
                 </div>
                 
-                <div class="foundation-card fade-in">
+                <div class="card">
                     <div class="reference">Augustine, Sermon 227</div>
                     <h3>Ancient Pattern</h3>
                     <p>"The divine Scriptures are read, the psalms are sung, the sermons are preached, the prayers are offered."</p>
@@ -775,10 +546,7 @@
     <section class="cta-section" id="join">
         <div class="container">
             <h2>Find a PROS Worship Near You</h2>
-            <p>
-                Join others who are gathering to hear God's Word read aloud. 
-                Experience the transforming power of public Scripture reading.
-            </p>
+            <p>Join others who are gathering to hear God's Word read aloud. Experience the transforming power of public Scripture reading.</p>
             <div class="cta-buttons">
                 <a href="#" class="btn-primary">🔍 Find a Gathering</a>
                 <a href="#contact" class="btn-secondary">Contact Us</a>
@@ -787,13 +555,10 @@
     </section>
 
     <!-- Start CTA Section -->
-    <section class="cta-section" id="start" style="background: var(--bg-warm);">
+    <section class="cta-section alt" id="start">
         <div class="container">
-            <h2 style="color: var(--primary);">Start a PROS Worship</h2>
-            <p style="color: var(--text-muted);">
-                Bring PROS worship to your community. We provide resources, guidance, and a network of churches 
-                committed to making Scripture reading central to worship.
-            </p>
+            <h2>Start a PROS Worship</h2>
+            <p>Bring PROS worship to your community. We provide resources, guidance, and a network of churches committed to making Scripture reading central to worship.</p>
             <div class="cta-buttons">
                 <a href="#" class="btn-primary">🚀 Get Started Guide</a>
                 <a href="#" class="btn-secondary">Download Resources</a>
@@ -804,7 +569,7 @@
     <!-- Footer -->
     <footer>
         <a href="#" class="logo">
-            <div class="logo-icon">📖</div>
+            <img src="pros-logo.jpg" alt="PROS Worship">
             <span class="logo-text">PROS <span>Worship</span></span>
         </a>
         <p>Public Reading of Scripture — A movement of churches returning to the Bible as the center of worship.</p>
@@ -820,12 +585,17 @@
             toggle.classList.toggle('active');
         }
 
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-mobile a').forEach(link => {
-            link.addEventListener('click', () => {
-                toggleMenu();
-            });
-        });
+        // Slideshow
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, 5000); // Change every 5 seconds
 
         // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -833,30 +603,9 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
-        });
-
-        // Fade-in Animation on Scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
         });
     </script>
 </body>
